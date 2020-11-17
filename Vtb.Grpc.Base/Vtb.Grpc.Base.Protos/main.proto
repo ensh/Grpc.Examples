@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "Vtb.Grpc.Base.Service";
+import "google/protobuf/empty.proto";
+package main;
+
+service Main {
+  rpc Command (Data) returns (google.protobuf.Empty);
+  rpc Query (Data) returns (Data);
+  rpc Outcome (stream Data) returns (google.protobuf.Empty);
+  rpc Dual (stream Data) returns (stream Data);
+  rpc Income (google.protobuf.Empty) returns (stream Data);
+}
+
+message Data {
+  string body = 1;
+}
